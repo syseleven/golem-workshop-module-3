@@ -15,7 +15,7 @@ helm upgrade --install promtail grafana/promtail --namespace monitoring -f value
 kubectl apply -f datasource.yaml
 ```
 
-## Restart Grafana
+## Restart Grafana because of init Container and new datasource
 
 ```shell
 kubectl rollout restart deployment -n monitoring prom-grafana
