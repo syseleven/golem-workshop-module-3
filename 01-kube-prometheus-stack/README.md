@@ -13,13 +13,14 @@ kubectl create namespace monitoring
 kubectl apply -f basic-auth.yaml
 ```
 
-```shell
+* Before installation of kube prometheus stack lets check what would be installed
+
+```sh
 helm diff upgrade --disable-validation --allow-unreleased prom prometheus-community/kube-prometheus-stack --values values.yaml
 ```
 
-```shell
-helm upgrade --install --namespace monitoring -f values.yaml --version 18.0.12 prom prometheus-community/kube-prometheus-stack
 ```
+helm upgrade --install --namespace monitoring -f values.yaml --version 20.0.1 prom prometheus-community/kube-prometheus-stack
 
 kubectl apply -f dashboards/
 kubectl apply -f service-monitors/
