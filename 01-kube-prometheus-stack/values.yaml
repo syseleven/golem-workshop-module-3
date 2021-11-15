@@ -18,7 +18,7 @@ alertmanager:
 
 prometheus:
   prometheusSpec:
-    retention: 4h
+    retention: 24h
     ruleSelector: {}
     ruleSelectorNilUsesHelmValues: false
     serviceMonitorSelector: {}
@@ -56,6 +56,11 @@ grafana:
     tls:
       - hosts:
           - grafana.workshop.metakube.org
+  grafana.ini:
+    users:
+      auto_assign_org_role: Admin
+    analytics:
+      check_for_updates: false
 
   sidecar:
     dashboards:

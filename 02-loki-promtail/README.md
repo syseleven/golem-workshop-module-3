@@ -10,12 +10,12 @@
 ```shell
 helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
-helm upgrade --install loki grafana/loki --namespace monitoring -f values-loki.yaml --version 2.6.0
-helm upgrade --install promtail grafana/promtail --namespace monitoring -f values-promtail.yaml --version 3.8.1
+helm upgrade --install loki grafana/loki --namespace monitoring -f values-loki.yaml --version 2.8.1
+helm upgrade --install promtail grafana/promtail --namespace monitoring -f values-promtail.yaml --version 3.9.1
 kubectl apply -f datasource.yaml
 ```
 
-## Restart Grafana because of init Container and new datasource
+## Restart Grafana
 
 ```shell
 kubectl rollout restart deployment -n monitoring prom-grafana
