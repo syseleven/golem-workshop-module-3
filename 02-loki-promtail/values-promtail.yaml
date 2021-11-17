@@ -1,6 +1,7 @@
 config:
   lokiAddress: http://loki:3100/loki/api/v1/push
 
+
 initContainer:
   enabled: true
   fsInotifyMaxUserInstances: 1024
@@ -31,18 +32,3 @@ serviceMonitor:
 tolerations:
   - effect: NoSchedule
     operator: Exists
-
-config:
-  snippets:
-    extraScrapeConfigs: |
-      - job_name: journal
-        journal:
-          path: /var/log/journal
-          max_age: 12h
-          labels:
-            job: systemd-journal
-        relabel_configs:
-          - source_labels: ['__journal__systemd_unit']
-            target_label: 'unit'
-          - source_labels: ['__journal__hostname']
-            target_label: 'hostname'

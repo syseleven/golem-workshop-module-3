@@ -23,15 +23,15 @@ linkerd check
 
 * Add Ingress for LinkerD dashboard or use `linkerd viz dashboard` without defining ingress and secret resource
 
-```shell
-kubectl apply -f basic-auth.yaml
-kubectl apply -f linkerd-ingress.yaml
-```
-
 * Add linkerd-viz extension
 
 ```shell
 linkerd viz install | kubectl apply -f -
+```
+
+```shell
+kubectl apply -f basic-auth.yaml
+kubectl apply -f linkerd-ingress.yaml
 ```
 
 * Inject LinkerD proxy into existing deployments
