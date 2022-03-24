@@ -2,7 +2,7 @@
 
 **This installation is required only once per cluster.**
 
-* Download linkerd CLI: https://linkerd.io/2/getting-started/#step-1-install-the-cli
+* [Download linkerd CLI](https://linkerd.io/2/getting-started/#step-1-install-the-cli)
 
 Linux: `curl -sL run.linkerd.io/install | sh`
 MacOS: `brew install linkerd`
@@ -53,7 +53,7 @@ kubectl get deployments -o yaml | linkerd inject - | kubectl apply -f -
 
 * Check LinkerD dashboard
 
-```
+```shell
 linkerd viz dashboard &
 kubectl -n ingress-nginx get deployments -o yaml | linkerd inject - | kubectl apply -f -
 ```

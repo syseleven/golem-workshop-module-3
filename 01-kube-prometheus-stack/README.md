@@ -19,7 +19,7 @@ kubectl apply -f basic-auth.yaml
 helm diff upgrade --disable-validation --allow-unreleased prom prometheus-community/kube-prometheus-stack --values values.yaml
 ```
 
-```
+```shell
 helm upgrade --install --namespace monitoring -f values.yaml --version 20.0.1 prom prometheus-community/kube-prometheus-stack
 
 kubectl apply -f dashboards/
@@ -38,4 +38,4 @@ kubectl get secret kube-prometheus-stack-grafana -o jsonpath="{.data.admin-passw
 kubectl port-forward service/kube-prometheus-stack-grafana 8080:80
 ```
 
-* import [Node Exporter Dashboard](https://grafana.com/grafana/dashboards/13978?pg=dashboards&plcmt=featured-sub1
+* import [Node Exporter Dashboard](https://grafana.com/grafana/dashboards/13978?pg=dashboards&plcmt=featured-sub1)
