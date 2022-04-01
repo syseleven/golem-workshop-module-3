@@ -10,6 +10,7 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 
 ```shell
 kubectl create namespace monitoring
+kubectl label namespace monitoring golem-workshop=true
 kubectl apply -f basic-auth.yaml
 ```
 
