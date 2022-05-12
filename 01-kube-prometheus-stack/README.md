@@ -35,8 +35,8 @@ kubectl rollout restart deployment prom-grafana
 * get Grafana password and port-forward to UI
 
 ```shell
-kubectl get secret kube-prometheus-stack-grafana -o jsonpath="{.data.admin-password}" | base64 --decode
-kubectl port-forward service/kube-prometheus-stack-grafana 8080:80
+kubectl -n monitoring get secret prom-grafana -o jsonpath="{.data.admin-password}" | base64 --decode
+kubectl -n monitoring port-forward service/prom-grafana 8080:80
 ```
 
 * import [Node Exporter Dashboard](https://grafana.com/grafana/dashboards/13978?pg=dashboards&plcmt=featured-sub1)
