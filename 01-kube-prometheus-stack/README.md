@@ -39,4 +39,6 @@ kubectl -n monitoring get secret prom-grafana -o jsonpath="{.data.admin-password
 kubectl -n monitoring port-forward service/prom-grafana 8080:80
 ```
 
+* Visit http://localhost:8080/
+
 * import [Node Exporter Dashboard](https://grafana.com/grafana/dashboards/13978?pg=dashboards&plcmt=featured-sub1)
