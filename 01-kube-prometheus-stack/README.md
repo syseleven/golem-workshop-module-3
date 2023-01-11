@@ -38,6 +38,11 @@ kubectl rollout restart deployment prom-grafana
 kubectl -n monitoring get secret prom-grafana -o jsonpath="{.data.admin-password}" | base64 --decode
 kubectl -n monitoring port-forward service/prom-grafana 8080:80
 ```
+* ONLY FOR JUMPHOST SETUP USERS
+
+```shell
+ssh -L 8080:localhost:8080 <user>@<IP-of-Jumphost>
+```
 
 * Visit http://localhost:8080/
 
