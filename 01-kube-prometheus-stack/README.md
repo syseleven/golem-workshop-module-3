@@ -17,6 +17,12 @@ kubectl apply -f basic-auth.yaml
 * Before installation of kube prometheus stack lets check what would be installed
 
 ```sh
+# This step is optional!
+
+# Install PlugIn for helm that gives diff info beforehand
+helm plugin install https://github.com/databus23/helm-diff
+
+# Run the diff before the real upgrade
 helm diff upgrade --disable-validation --allow-unreleased prom prometheus-community/kube-prometheus-stack --values values.yaml
 ```
 
