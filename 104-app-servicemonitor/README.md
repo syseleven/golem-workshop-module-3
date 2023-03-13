@@ -65,7 +65,7 @@ and from its configuration
 * Recap how serviceMonitor connects to the service and how service connects to the pod
 
   ```shell
-  kubectl -n <YOURNAME> get po,svc,servicemonitors.monitoring.coreos.com  --show-labels
+  kubectl -n ${YOURNAME} get po,svc,servicemonitors.monitoring.coreos.com  --show-labels
   ```
 
 ### Conclusion

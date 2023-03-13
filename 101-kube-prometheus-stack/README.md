@@ -46,7 +46,7 @@
 * Now deploy kube-prometheus-stack
 
   ```shell
-  helm upgrade --install --namespace monitoring -f prom-values --version 45.6.0 prom prometheus-community/kube-prometheus-stack
+  helm upgrade --install --namespace monitoring -f prom-values.yaml --version 45.6.0 prom prometheus-community/kube-prometheus-stack
   ```
 
 * Verify it is installed

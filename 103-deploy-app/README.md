@@ -8,7 +8,7 @@
 
   ```shell
   export YOURNAME=<YOURNAME>
-  helm -n ${YOURNAME} upgrade --install ${YOURNAME}-metrics-app metrics-app --set ingress.host=${YOURNAME}.choerl.metakube.io #TODO
+  helm -n ${YOURNAME} upgrade --install ${YOURNAME}-metrics-app metrics-app -f prom-values.yaml --set ingress.host=${YOURNAME}.choerl.metakube.io #TODO
   ```
 
 * Verify it is installed properly and obtain your ingress endpoints

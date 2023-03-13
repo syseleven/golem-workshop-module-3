@@ -15,7 +15,7 @@
 * Update our prometheus deployment with the new settings:
 
   ```shell
-  helm upgrade --install --namespace monitoring -f prom-values --version 45.6.0 prom prometheus-community/kube-prometheus-stack
+  helm upgrade --install --namespace monitoring -f prom-values.yaml --version 45.6.0 prom prometheus-community/kube-prometheus-stack
   ```
 
 * Verify basic authentication for prometheus web interface is enabled and enforced 
