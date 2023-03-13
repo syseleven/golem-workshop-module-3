@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: metrics-app
+spec:
+  endpoints:
+    - interval: 10s
+      scrapeTimeout: 10s
+      targetPort: 8090
+      path: /metrics
+  namespaceSelector:
+    matchNames:
+      - <YOURNAME> #<-- please adjust your namespace here
+  selector:
+    matchLabels:
+      app: metrics-app

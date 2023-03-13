@@ -1,0 +1,86 @@
+# deploy prometheus
+prometheus:
+  prometheusSpec:
+    retention: 24h
+    ruleSelector: {}
+    ruleSelectorNilUsesHelmValues: false
+    serviceMonitorSelector: {}
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelector: {}
+    podMonitorSelectorNilUsesHelmValues: false
+    replicas: 2
+    podAntiAffinity: hard
+  # now we enable an ingress resource to make prometheus web interface publically available
+  # under a DNS name secured by a certificate and basic authentication
+  ingress:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/auth-type: basic
+      nginx.ingress.kubernetes.io/auth-secret: basic-auth
+      kubernetes.io/ingress.class: nginx
+    hosts:
+      - prometheus.choerl.metakube.io #TODO
+    tls:
+      - hosts:
+          - prometheus.choerl.metakube.io #TODO
+
+# deploy grafana
+grafana:
+  adminPassword: admin
+  ingress:
+    enabled: false
+  # "classic" grafana configuration
+  grafana.ini:
+    users:
+      auto_assign_org_role: Admin
+    analytics:
+      check_for_updates: false
+  # make grafana notice new dashboards for import at runtime
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+    datasources:
+      enabled: true
+      label: grafana_datasource
+
+# deploy alertmanager
+alertmanager:
+  alertmanagerSpec:
+    storage:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
+    replicas: 2
+    podAntiAffinity: hard
+
+# monitor kubernetes components
+defaultRules:
+  rules:
+    kubernetesResources: true
+
+# monitor the kubelet on worker nodes
+kubelet:
+  enabled: true
+  namespace: kube-system
+  serviceMonitor:
+    https: true
+
+# monitor coreDNS service
+coreDns:
+  enabled: false
+
+# monitor the kubernetes database - etcd key values store
+kubeEtcd:
+  enabled: true
+
+# we do not need these because the kube-controller-manager and kube-scheduler
+# are managed and monitored by MetaKube itself
+kubeControllerManager:
+  enabled: false
+
+kubeScheduler:
+  enabled: false

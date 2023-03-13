@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: metrics-app
+  name: metrics-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: metrics-app
+  template:
+    metadata:
+      labels:
+        app: metrics-app
+    spec:
+      containers:
+      - image: "{{ .Values.image.name }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        name: metrics-app
+        ports:
+        - name: web
+          containerPort: 8090
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always

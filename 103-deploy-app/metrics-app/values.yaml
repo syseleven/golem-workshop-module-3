@@ -1,0 +1,6 @@
+image:
+  name: choerlsys11/metrics-app
+  tag: 0.0.1
+
+ingress:
+  host: dummy

@@ -1,5 +1,7 @@
-# Dive-In Kubernetes: Observability, Monitoring & Alerting
+# Kubernetes Deep Dive-Workshop: Observability, Monitoring & Alerting
 
-## Beschreibungstext
+## Beschreibung
 
-Observability, Monitoring & Alerting bilden die Basis eines jeden Produktivbetriebs. In diesem Dive-In Workshop bekommt ihr einen Überblick über den Kube-Prometheus-Stack und Loki/Promtail vermittelt.
+Observability, Monitoring & Alerting bilden die Basis eines jeden Produktivbetriebs. 
+In diesem Deep Dive Workshop bekommt ihr einen Überblick über das Monitoring in einem Kubernetes Cluster
+und steigt tiefer in die Konfiguration von Kube-Prometheus-Stack und Loki/Promtail ein.
