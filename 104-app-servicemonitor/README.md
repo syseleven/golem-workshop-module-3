@@ -2,19 +2,6 @@
 
 ## Deploy a serviceMonitor for your own application
 
-### Reset kube-prometheus-stack configuration
-
-**This installation is required only once in the cluster.**
-
-* Update our prometheus deployment with the old settings:
-
-  ```shell
-  helm upgrade --install --namespace monitoring -f prom-values.yaml --version 45.6.0 prom prometheus-community/kube-prometheus-stack
-  ```
-
-**Result:** the metrics-app should be gone from the targets on the prometheus web interface 
-and from its configuration
-
 ### Prepare a serviceMonitor
 
 **This installation is required in every participants namespace.**

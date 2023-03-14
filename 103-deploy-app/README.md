@@ -1,6 +1,6 @@
 # kube-prometheus-stack
 
-## Deploy your own application
+### Deploy your own application
 
 **This installation is required in every participants namespace.**
 
@@ -38,13 +38,15 @@
 * Visit http://metrics-app.YOURNAME.metakube.org/ping
 * Visit http://metrics-app.YOURNAME.metakube.org/metrics
 
-## Reconfigure Prometheus with a manual configuration
+---
+
+### Reconfigure Prometheus with a manual configuration
 
 **This installation is required only once in the cluster.**
 
 * Now we need Prometheus to pick up metrics from our application
 
-* Take notice of the altered prom-values.yaml file where we enable prometheus ingress
+* Take notice of the altered prom-values.yaml file where we add a scrapeConfig
 
 * Update our prometheus deployment with the new settings:
 
@@ -52,13 +54,31 @@
   helm upgrade --install --namespace monitoring -f prom-values.yaml --version 45.6.0 prom prometheus-community/kube-prometheus-stack
   ```
 
-## View the results
+### View the results
 
 * Visit the prometheus web interface http://prometheus.workshop.metakube.io
 
 * View the configuration which contains the manual configuration from helm values
 
 * View the targets and especially the new metrics-app target we configured by service discovery
+
+---
+
+### Clean up
+
+Reset kube-prometheus-stack configuration
+
+**This installation is required only once in the cluster.**
+
+* Update our prometheus deployment with the old settings:
+
+  ```shell
+  helm upgrade --install --namespace monitoring -f prom-values-reset.yaml --version 45.6.0 prom prometheus-community/kube-prometheus-stack
+  ```
+**Result:** the metrics-app should be gone from the targets on the prometheus web interface 
+and from its configuration
+
+---
 
 ## Conclusion
 

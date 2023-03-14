@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  annotations:
+    prometheus-operator-validated: "true"
+  name: metrics-app-rules
+spec:
+  groups:
+  - name: ./metrics-app.rules
+    rules:
+    - alert: MetricsAppLoad
+      annotations:
+        description: Metrics app was called more than {{ $value }} times.
+        summary: Think about offering more supplies.
+      expr: sum(ping_request_count{namespace="<YOURNAME>"}) #<-- adjust your namespace
+      for: 1s
+      labels:
+        severity: critical

@@ -14,7 +14,7 @@ spec:
         app: blackbox-exporter
     spec:
       containers:
-        - image: prom/blackbox-exporter:v0.15.1
+        - image: prom/blackbox-exporter:v0.23.0
           name: blackbox-exporter
           volumeMounts:
             - mountPath: /etc/blackbox_exporter
