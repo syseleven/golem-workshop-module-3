@@ -25,6 +25,14 @@ prometheus:
             kubeconfig_file: ""
             follow_redirects: true
             enable_http2: true
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: sys11-quobyte-external-provisioner
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
   # now we enable an ingress resource to make prometheus web interface publically available
   # under a DNS name secured by a certificate and basic authentication
   ingress:

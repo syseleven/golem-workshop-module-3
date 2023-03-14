@@ -43,6 +43,10 @@
   helm diff upgrade --namespace monitoring --disable-validation --allow-unreleased prom prometheus-community/kube-prometheus-stack --version 45.6.0 --values prom-values
   ```
 
+* Inspect the values it will deployed with: `prom-values.yaml`
+  * Take notice of the `retention` information
+
+
 * Now deploy kube-prometheus-stack
 
   ```shell

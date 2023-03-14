@@ -10,6 +10,14 @@ prometheus:
     podMonitorSelectorNilUsesHelmValues: false
     replicas: 2
     podAntiAffinity: hard
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: sys11-quobyte-external-provisioner
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
   ingress:
     enabled: false
 
