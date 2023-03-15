@@ -10,7 +10,7 @@ spec:
       path: /metrics
   namespaceSelector:
     matchNames:
-      - <YOURNAME> #<-- please adjust your namespace here
+      - YOURNAME #<-- please adjust your namespace here
   selector:
     matchLabels:
-      app: metrics-app
+      app: metrics-app-service
