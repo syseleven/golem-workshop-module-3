@@ -12,7 +12,7 @@ spec:
       annotations:
         description: Metrics app was called more than {{ $value }} times.
         summary: Think about offering more supplies.
-      expr: sum(ping_request_count{namespace="<YOURNAME>"}) #<-- adjust your namespace
+      expr: sum(ping_request_count{namespace="<YOURNAME>"}) > 5 #<-- adjust your namespace
       for: 1s
       labels:
         severity: critical

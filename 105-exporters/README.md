@@ -20,10 +20,10 @@ HTTP/S. For example you can use it to monitor a website and its certificates.
   kubectl -n monitoring get po
   ```
 
-* View the result in prometheus web interface
-  * a new target form the serviceMonitor
+* After a while view the result in prometheus web interface
+  * a new target "blackbox-exporter" appears through its serviceMonitor
 
 ### Conclusion
 
 In this exercise we deployed blackbox-exporter which already collects metrics
-but will be of more interest when we view its dashboard in Grafana later.
+but will be of more interest when we view its dashboard in Grafana later in this workshop.

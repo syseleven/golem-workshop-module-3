@@ -1,6 +1,6 @@
 # kube-prometheus-stack
 
-## Alerting Rules
+## AlertManager Alerting Rules
 
 ### Scope
 
@@ -11,10 +11,9 @@ when to fire an alert event.
 
 ### Create an alerting rule
 
-Alerting rules are defined as a CRD resource of kind PrometheusRule.
+Alerting rules are defined as CRD resources of kind "PrometheusRule".
 
-* Adjust the namespace in the rule manifest:
-* edit rules/metrics-app-rule.yaml
+* First adjust your personal namespace in the rule manifest. Edit the file `rules/metrics-app-rule.yaml`
 
   ```yaml
   # metrics-app-rule.yaml
@@ -25,25 +24,35 @@ Alerting rules are defined as a CRD resource of kind PrometheusRule.
 
 ### Deploy alerting rule
 
-* deploy
+* Deploy
 
   ```shell
-  export YOURNAME=<YOURNAME>
-  kubectl -n ${YOURNAME} apply -f rules/matrics-app-rule.yaml
+  read -p "Please enter your name (without blanks e.g. johndoe): " YOURNAME
+  export YOURNAME
+  kubectl -n ${YOURNAME} apply -f rules/metrics-app-rule.yaml
   ``` 
+
+* Verify
+
+  ```shell
+  kubectl -n ${YOURNAME} get prometheusrules.monitoring.coreos.com
+  ```
 
 ### Trigger an alert
 
 * to trigger AlertManager firing an alert call your application endpoint to exceed the threshold of the rule
-
-  Browse or curl more than 5 times:
-  
-  `curl http://${YOURNAME}.workshop.metakube.org/ping`
+  * Browse or curl the URL more than 5 times:
+  * `curl https://${YOURNAME}.workshop.metakube.org/ping`
 
 * View the result in the prometheus web interface
   * Status - Rules: new rule appears
   * Alerts: firing alerts
 
+* Want to try again?
+  * reset the metric counter to zero by this command:
+  * `kubectl -n ${YOURNAME} rollout restart deployment metrics-app`
+
 ### Conclusion
 
-Metrics are reset to 0 when the pod / deployment is deleted and re-installed.
+* Metrics are reset to zero when the pod / deployment is deleted and re-installed.
+* Our "static" alerting rule for Prometheus AlertManager is set up correctly.
