@@ -4,8 +4,9 @@
 
 ## Install Loki and configure Grafana
 
-[loki](https://artifacthub.io/packages/helm/grafana/loki)
-[promtail](https://artifacthub.io/packages/helm/grafana/promtail)
+* [Official loki Helm Charts](https://artifacthub.io/packages/helm/grafana/loki)
+
+* [Official promtail Helm Charts](https://artifacthub.io/packages/helm/grafana/promtail)
 
 ```shell
 helm repo add grafana https://grafana.github.io/helm-charts

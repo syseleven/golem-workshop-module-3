@@ -4,24 +4,25 @@
 
 **This installation is required only once per cluster.**
 
-* We already deployed Grafana before and we can already use it internally
+We already deployed Grafana before and we can already use it internally
 but we would like to enable public (password-protected) access to it.
 
-* Thus we do by enabling its ingress resource in the `values.yaml`.
+* This we achieve by enabling its ingress resource in the `prom-values.yaml`.
 
-* Inspect the file
+* First inspect the file
 
 * Now update kube-prometheus-stack with these settings
 
-```shell
-helm upgrade --install --namespace monitoring -f prom-values.yaml --version 45.6.0 prom prometheus-community/kube-prometheus-stack
-```
+  ```shell
+  helm upgrade --install --namespace monitoring -f prom-values.yaml --version 45.6.0 prom prometheus-community/kube-prometheus-stack
+  ```
 
 * Verify it is installed
 
   ```shell
   helm -n monitoring list
   helm -n monitoring get values prom
+  kubectl -n monitoring get ing
   ```
 
 * get Grafana password and port-forward to UI
@@ -37,6 +38,6 @@ Option 1:
 
 Option 2:
 
-* Visit public URL: http://grafana.workshop.metakube.org
+* Visit public URL: https://grafana.workshop.metakube.org
 
 * import [Node Exporter Dashboard](https://grafana.com/grafana/dashboards/13978?pg=dashboards&plcmt=featured-sub1)

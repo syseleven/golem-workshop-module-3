@@ -8,6 +8,13 @@ You need to have these tools installed on your local machine:
 - helm
 - linkerd
 
+Further this workshop is based on SysEleven's "Production Grade Deployment" workshop and we
+assume you have these services up and running:
+
+- Ingress Controller: ingress-nginx
+- cert-manager
+- external-dns
+
 ## Preparation
 
 * Before you begin with the actual exercise please make sure to follow these steps to work in your own environment:

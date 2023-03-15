@@ -1,0 +1,35 @@
+# The number of replicas to create (has no effect if autoscaling enabled)
+replicas: 1
+
+# Pod resource requests and limits
+resources: {}
+  # requests:
+  #   cpu: "500m"
+  #   memory: "1024Mi"
+  # limits:
+  #   cpu: "500m"
+  #   memory: "1024Mi"
+
+service:
+  # The Service type
+  type: LoadBalancer
+
+ingress:
+  # If `true`, an Ingress is created
+  enabled: true
+  # The name of the Ingress Class associated with this ingress
+  ingressClassName: "nginx"
+  # List of rules for the Ingress
+  rules:
+    -
+      # Ingress host
+      host: 'keycloak.workshop.metakube.org'
+      # Paths for the host
+      paths:
+        - path: /
+          pathType: Prefix
+  # TLS configuration
+  tls:
+    - hosts:
+        - keycloak.workshop.metakube.org
+      secretName: ""

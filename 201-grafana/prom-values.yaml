@@ -27,10 +27,10 @@ prometheus:
       nginx.ingress.kubernetes.io/auth-secret: basic-auth
       kubernetes.io/ingress.class: nginx
     hosts:
-      - prometheus.choerl.metakube.io #TODO
+      - prometheus.workshop.metakube.org
     tls:
       - hosts:
-          - prometheus.choerl.metakube.io #TODO
+          - prometheus.workshop.metakube.org
 
 # deploy grafana
 grafana:
@@ -39,15 +39,15 @@ grafana:
     # enable grafana public ingress
     enabled: true
     annotations:
-      # enable basic auth as for prometheus web interface
-      nginx.ingress.kubernetes.io/auth-type: basic
-      nginx.ingress.kubernetes.io/auth-secret: basic-auth
+      ## optionally enable basic auth as for prometheus web interface
+      # nginx.ingress.kubernetes.io/auth-type: basic
+      # nginx.ingress.kubernetes.io/auth-secret: basic-auth
       kubernetes.io/ingress.class: nginx
     hosts:
-      - grafana.choerl.metakube.io #TODO
+      - grafana.workshop.metakube.org
     tls:
       - hosts:
-          - grafana.choerl.metakube.io #TODO
+          - grafana.workshop.metakube.org
   # "classic" grafana configuration
   grafana.ini:
     users:
@@ -62,6 +62,9 @@ grafana:
     datasources:
       enabled: true
       label: grafana_datasource
+  # make grafana data persistent
+  persistence:
+    enabled: true
 
 # deploy alertmanager
 alertmanager:

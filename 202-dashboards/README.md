@@ -47,6 +47,4 @@ container to pick up these dashboard definitions and apply them at runtime.
 
 * Example:
 
-  ```shell
-  sum(ping_request_count)
-  ```
+  `sum(ping_request_count)`
