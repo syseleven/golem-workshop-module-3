@@ -5,7 +5,8 @@
 * Before you begin with the actual exercise please make sure to follow these steps to work in your own environment:
 
   ```shell
-  export YOURNAME=<YOURNAME> #<-- please replace with your name
+  read -p "Please enter your name (without blanks e.g. johndoe): " YOURNAME
+  export YOURNAME
   kubectl create ns ${YOURNAME}
   kubectl label namespace ${YOURNAME} deepdive-observability=true
   kubectl config set-context --current --namespace=${YOURNAME}
@@ -40,12 +41,15 @@
   helm plugin install https://github.com/databus23/helm-diff
   
   # Run the diff before the real upgrade
-  helm diff upgrade --namespace monitoring --disable-validation --allow-unreleased prom prometheus-community/kube-prometheus-stack --version 45.6.0 --values prom-values
+  helm diff upgrade --namespace monitoring --disable-validation --allow-unreleased prom prometheus-community/kube-prometheus-stack --version 45.6.0 --values prom-values.yaml
   ```
 
 * Inspect the values it will deployed with: `prom-values.yaml`
-  * Take notice of the `retention` information
+  * take notice of the `retention` information
+  * take notice of the `persistence` settings
 
+* Inspect the persistent volumes and volume claims in k8s
+  * `kubectl -n monitoring get pvc,pv`
 
 * Now deploy kube-prometheus-stack
 

@@ -5,6 +5,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
 spec:
+  ingressClassName: nginx
   rules:
   - host: "{{ .Values.ingress.host }}"
     http:
@@ -30,3 +31,6 @@ spec:
               number: 8090
         path: /metrics
         pathType: Exact
+  tls:
+  - hosts:
+    - {{ .Values.tls.cn }}

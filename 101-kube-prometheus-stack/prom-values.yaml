@@ -40,6 +40,9 @@ grafana:
     datasources:
       enabled: true
       label: grafana_datasource
+  # make grafana data persistent
+  persistence:
+    enabled: true
 
 # deploy alertmanager
 alertmanager:
