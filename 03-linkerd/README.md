@@ -17,6 +17,7 @@ linkerd check --pre
 * Install Linkerd in Cluster and verify installation
 
 ```shell
+linkerd install --crds | kubectl apply -f -
 linkerd install | kubectl apply -f -
 linkerd check
 ```
@@ -27,6 +28,7 @@ linkerd check
 
 ```shell
 linkerd viz install | kubectl apply -f -
+linkerd check
 ```
 
 ```shell
