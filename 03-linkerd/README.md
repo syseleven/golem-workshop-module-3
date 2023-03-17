@@ -70,4 +70,4 @@ kubectl -n ingress-nginx get deployments -o yaml | linkerd inject - | kubectl ap
 
 * and in more detail
 
-`linkerd viz -n simple-httpd tap pod`
+`linkerd viz -n ${YOURNAME} tap pod`
