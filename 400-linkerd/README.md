@@ -17,6 +17,7 @@ linkerd check --pre
 * Install Linkerd in Cluster and verify installation
 
 ```shell
+linkerd install --crds | kubectl apply -f -
 linkerd install | kubectl apply -f -
 linkerd check
 ```
@@ -27,6 +28,7 @@ linkerd check
 
 ```shell
 linkerd viz install | kubectl apply -f -
+linkerd check
 ```
 
 ```shell
@@ -48,12 +50,24 @@ kubectl edit deployment web-application
 * you can also inject linkerd to all deployments in a specific namespace
 
 ```shell
-kubectl get deployments -o yaml | linkerd inject - | kubectl apply -f -
+kubectl -n <NAMESPACE> get deployments -o yaml | linkerd inject - | kubectl apply -f -
 ```
 
-* Check LinkerD dashboard
+* Verify if its pods are finally there:
+
+`kubectl -n <NAMESPACE> get po -o jsonpath='{.items[0].spec.containers[*].name}'`
+
+* Also mesh the ingress controller and check LinkerD dashboard
 
 ```shell
 linkerd viz dashboard &
 kubectl -n ingress-nginx get deployments -o yaml | linkerd inject - | kubectl apply -f -
 ```
+
+* Verify mTLS traffic is working
+
+`linkerd viz -n ${YOURNAME} edges pod`
+
+* and in more detail
+
+`linkerd viz -n ${YOURNAME} tap pod`
