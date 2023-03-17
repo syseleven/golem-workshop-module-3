@@ -67,3 +67,7 @@ kubectl -n ingress-nginx get deployments -o yaml | linkerd inject - | kubectl ap
 * Verify mTLS traffic is working
 
 `linkerd viz -n ${YOURNAME} edges pod`
+
+* and in more detail
+
+`linkerd viz -n simple-httpd tap pod`
