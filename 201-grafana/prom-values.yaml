@@ -34,6 +34,7 @@ prometheus:
 
 # deploy grafana
 grafana:
+  replicas: 1
   adminPassword: admin
   ingress:
     # enable grafana public ingress
@@ -66,7 +67,7 @@ grafana:
       auth_url: https://keycloak.workshop.metakube.org/auth/realms/workshop/protocol/openid-connect/auth
       token_url: https://keycloak.workshop.metakube.org/auth/realms/workshop/protocol/openid-connect/token
       client_id: grafana.workshop.metakube.org
-      client_secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      client_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
       name: KeyCloak workshop Realm
       role_attribute_path: contains(roles[*], 'Workshop-grafana-admin') && 'Workshop-grafana-admin' || contains(roles[*], 'Workshop-grafana-editor') && 'Workshop-grafana-editor' || 'Workshop-grafana-viewer'
       scopes: openid profile email
