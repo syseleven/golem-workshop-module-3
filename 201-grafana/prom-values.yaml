@@ -55,7 +55,7 @@ grafana:
       root_url: https://grafana.workshop.metakube.org
       server_domain: https://grafana.workshop.metakube.org
     auth:
-      signout_redirect_url: https://keycloak.workshop.metakube.org/auth/realms/workshop/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2Fgrafana.workshop.metakube.org%2Flogin
+      signout_redirect_url: https://keycloak.metakube.org/auth/realms/observability/protocol/openid-connect/logout?redirect_uri=https%3A%2F%2Fgrafana.workshop.metakube.org%2Flogin
     auth.generic_oauth:
       enabled: true
       allow_sign_up: true
@@ -63,13 +63,13 @@ grafana:
       # disable_login_form: true
       anonymous_enabled: false
       disable_signout_menu: false
-      api_url: https://keycloak.workshop.metakube.org/auth/realms/workshop/protocol/openid-connect/userinfo
-      auth_url: https://keycloak.workshop.metakube.org/auth/realms/workshop/protocol/openid-connect/auth
-      token_url: https://keycloak.workshop.metakube.org/auth/realms/workshop/protocol/openid-connect/token
-      client_id: grafana.workshop.metakube.org
-      client_secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-      name: KeyCloak workshop Realm
-      role_attribute_path: contains(roles[*], 'Workshop-grafana-admin') && 'Workshop-grafana-admin' || contains(roles[*], 'Workshop-grafana-editor') && 'Workshop-grafana-editor' || 'Workshop-grafana-viewer'
+      api_url: https://keycloak.metakube.org/auth/realms/observability/protocol/openid-connect/userinfo
+      auth_url: https://keycloak.metakube.org/auth/realms/observability/protocol/openid-connect/auth
+      token_url: https://keycloak.metakube.org/auth/realms/observability/protocol/openid-connect/token
+      client_id: grafana
+      client_secret: PswMxQ0IHsmMpFNDWhrMGNS8aDtUiRQJ
+      name: KeyCloak Observability Realm
+      role_attribute_path: contains(roles[*], 'Grafana-admin') && 'Grafana-admin' || contains(roles[*], 'Grafana-editor') && 'Grafana-editor' || 'Grafana-viewer'
       scopes: openid profile email
       empty_scopes: false
       auto_login: false
@@ -86,9 +86,6 @@ grafana:
     datasources:
       enabled: true
       label: grafana_datasource
-  # make grafana data persistent
-  persistence:
-    enabled: true
 
 # deploy alertmanager
 alertmanager:

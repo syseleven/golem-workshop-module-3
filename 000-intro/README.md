@@ -1,5 +1,13 @@
 # Introduction
 
+## Module info
+
+* Duration: ~5 hours 
+* Works with k8s version 1.24
+* Workshop Domain: *.workshop.metakube.org
+* Hands-on exercises and commands are optimized for Linux and Mac
+* Windows Users use WSL and/or PowerShell
+
 ## Prerequisites
 
 You need to have these tools installed on your local machine:

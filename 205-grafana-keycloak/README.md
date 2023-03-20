@@ -16,5 +16,7 @@ https://keycloak.workshop.metakube.org/
 
 You need local access to create the initial admin user.
 
+`k port-forward  svc/keycloak-http 8080:80`
+
 Open http://localhost:8080/auth
 or use the add-user-keycloak script.
