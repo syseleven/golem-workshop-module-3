@@ -27,7 +27,7 @@ helm diff upgrade --disable-validation --allow-unreleased prom prometheus-commun
 ```
 
 ```shell
-helm upgrade --install --namespace monitoring -f values.yaml --version 20.0.1 prom prometheus-community/kube-prometheus-stack
+helm upgrade --install --namespace monitoring -f values.yaml --version 45.6.0 prom prometheus-community/kube-prometheus-stack
 
 kubectl apply -f dashboards/
 kubectl apply -f service-monitors/
