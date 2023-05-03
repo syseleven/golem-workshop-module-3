@@ -10,8 +10,8 @@
 ```shell
 helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
-helm upgrade --install loki grafana/loki --namespace monitoring -f values-loki.yaml --version 2.8.1
-helm upgrade --install promtail grafana/promtail --namespace monitoring -f values-promtail.yaml --version 3.9.1
+helm upgrade --install loki grafana/loki --namespace monitoring -f values-loki.yaml --version 4.5.1
+helm upgrade --install promtail grafana/promtail --namespace monitoring -f values-promtail.yaml --version 6.8.2
 kubectl apply -f datasource.yaml
 ```
 
