@@ -20,3 +20,17 @@ kubectl apply -f datasource.yaml
 ```shell
 kubectl rollout restart deployment -n monitoring prom-grafana
 ```
+
+## Loki features
+
+### Explore Loki in Grafana
+
+* In Grafana create an alerting rule from one of Loki's logs. For example use this query:
+
+  ```sql
+  sum by (pod) (count_over_time({namespace="kube-system"} |~ "WARNING" [5m]))
+  ```
+
+* Example
+
+![Loki Alerting Rule](img/loki-grafana-alert-rule.png)
