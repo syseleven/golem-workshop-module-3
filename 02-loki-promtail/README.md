@@ -4,14 +4,15 @@
 
 ## Install Loki and configure Grafana
 
-[loki](https://artifacthub.io/packages/helm/grafana/loki)
-[promtail](https://artifacthub.io/packages/helm/grafana/promtail)
+* [loki at artifacthub](https://artifacthub.io/packages/helm/grafana/loki)
+
+* [promtail at artifacthub](https://artifacthub.io/packages/helm/grafana/promtail)
 
 ```shell
 helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
-helm upgrade --install loki grafana/loki --namespace monitoring -f values-loki.yaml --version 4.5.1
-helm upgrade --install promtail grafana/promtail --namespace monitoring -f values-promtail.yaml --version 6.8.2
+helm upgrade --install loki grafana/loki --namespace monitoring -f values-loki.yaml --version 4.10.0
+helm upgrade --install promtail grafana/promtail --namespace monitoring -f values-promtail.yaml --version 6.15.5
 kubectl apply -f datasource.yaml
 ```
 
